@@ -1,0 +1,143 @@
+// What are functional and class components ?
+// Functional components are the javascript functions which takes input of properties(props) and returns HTML(jsx) which describes UI.
+// Class components uses exports with React 'Component' and uses always the render method to return thr HTML(jsx) which decribes UI
+// Look for SS
+// What is JSX ? // look for SS
+// creating functional component first using with jsx and then without using jsx 
+// for without, you need to use a react method called 
+// React.createElement(), which takes many parameters in the order
+// React.createElement('name of parent container' , 'Additional features', 'Child Dom Nodes')
+// 
+
+
+
+https://www.freecodecamp.org/news/react-interview-questions-to-know/
+
+while using props we can return only single html element that is the limititaion that we have
+so we nedd to wrap all the content in a single div
+
+
+//////////////////////////////////////////
+
+props kya krta hai ?
+hm app.js se uss file ka yah uss component ka tag bnate hian and uske andhar opening tag mein hmm
+properties define lrte hain and woh properties ko display krne ki liye use hota hai props
+
+In function component , props is passed as a parameter to a function use as : "props.property_name "
+In class component, we access it using "this.props.property_name"
+
+So, react converts these attributes into an object whoch we called props.
+But we cannot assign the values or we canot change the values of the props object.
+Since parents passes propes down to their children there values can't be changed.
+
+for example it is given there in the program
+
+/---------> props vs state ?
+props are immutable that means there valuescan;t be changed like state since state body k andhar defined and eclare kiya jaata we can change the value of state
+now , both props and state contains information which influences our UI
+
+
+Now suppose if we display "Welcome viositors" and a button 
+Now I want if a user clicks on that button my content "Welcome visitors " gets changed to "Thanks for visiting"
+so forthis I have to use state not props
+
+//------> Exmaple of state using button 
+
+In this example, I used event and its handler method called "changeMessage()"
+which has to be defined after constructor using function setState() which accepts the object 
+so we have ---> setState({...})
+
+state is nothing biut a object which is privately mainted inside the component
+a state can influence what is going to be rendered into our browser
+and lastly state can be changed within the component
+
+
+///////////-------> this is all about props and state
+
+---------------------Counter
+Do's and Dont's with state object
+
+1. Directly kabhi bhi state change mt krna hamesha setState use krna 
+2. Agar apko update/set value print krani hai toh apko console setState function k bahar nhi likhna hai kyunki woh console phle call hojata hai before setting new state
+isliye apko dusra parameter pass krna hoga as a callback/arrow function in a setState() methis
+to print the updated/dynamic value also----->SS
+3. When you have to update the state based on the previous state make sure
+to pass an function as an argument   instead of a regular object
+the function has acces of the prev satte that can be used to calculate the new state and u can alsopass the 
+second param as props if you declared it in app.js and make use of props as well
+
+Use snippet "rce" to get the boiler plate code for import and class and render 
+Use snippet "rconst" to get the boiler plate code for the constructor
+
+
+
+1. Agar tune state ko directly change kiye toh UI re-render nhi hoga sirf console mein changes honge
+2.
+
+increment(){
+    this.setState({
+        count:this.state.count+1
+    })
+    console.log(this.state.count)
+}
+iss increment func. se joh value UI pr display ho rhi hain usse ek kam value(count-1) console ho rhi hai....why is that so?
+because calls to setState are asynchronous so console will call first and then a new state (setState) will bve called
+2. Whenever you need to execute some code after the state has benn changed dont place that code right after the 
+seState method instead place that code within the callback fnction which is passed as the second parameter to setState method
+
+/--------->destructuring of props and states
+1. destructuring in the parameter of the function itself
+2. destructuring in the function body
+USe "rfce" for the snippet of functional component
+
+Why we need eventHandlers binding ?
+because this keyword in eventHandlers has an undefined value
+
+backticks and dollar sign are feactures of ES6 not of react this is all template literals
+
+//////-----------------> how to access the method present in the parent component from the child component 
+
+well, we will use the same ...that is porps but instead of passing props we will pass the entire method [without any braces since we are passing only reference to the method]
+
+Conditional rendering : some jsx we want to diplay some jsx we want to hide based on the condition we have
+it can be achieved in ways like:
+1.If else
+we cannot use the if else statements inside the return that is inside the jsx because jsx is for only function call and class properties access
+that's why we used if else outside the return statement
+
+2.Element variable
+In this method, in the variable, we stored the element to be rendered.
+that is why called element variable approach.
+
+3. Ternary conditional operator approach 
+this approach can be used inside the jsx it just simply uses the ternary condition.
+
+4.Short curcuit approach
+This is the special case of the ternary operator approach where if we want to display nothing or something then we can go with this approach
+
+
+//------How to render a list of elements ?-------//
+using map method
+map method iterates over the used array and take arrow function waith param as input and transform each element with the operation provided.
+
+Mow additionally what you can do is keep the return statement simple by removing out the return statement logic
+Now after performing above task we want to display some properties of all the elements
+Now we want to put the jsx into another file just to simplify the system files .
+after this in console you will get the error of 
+Warning: Each child in a list should have a unique "key" prop.
+so we will juse {person.id} as a key for each object.
+Now key prop is a special attribute you need to include while rendering the list of elements.
+
+Now important point to note here is that we cannot access the key prop inside the child component just as shown.
+
+Error:
+Warning: Person: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop.
+kya react kh rhi hai hmse ki react key prop ko use kr rhi hai list ko UI pr render krane k liye isliye react mein key prop is reserved so you have to use another prop to do any operation.
+
+
+
+
+
+
+
+
